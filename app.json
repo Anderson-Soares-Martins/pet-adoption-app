@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "pet-adoption-app",
+    "slug": "pet-adoption-app",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
