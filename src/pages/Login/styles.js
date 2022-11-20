@@ -5,6 +5,8 @@ const Styles = StyleSheet.create({
     flex: 1,
   },
   header: {
+    flex: 1,
+    justifyContent: 'flex-end',
     paddingStart: '10%',
   },
   message: {
@@ -18,13 +20,12 @@ const Styles = StyleSheet.create({
   logo: {
     width: 65,
     height: 65,
-    marginTop: '40%'
   },
   form: {
-    flex: 2,
     paddingStart: '10%',
     paddingEnd: '10%',
     paddingTop: '10%',
+    flex: 1.5,
   },
   formText: {
     fontSize: 18,
