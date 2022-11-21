@@ -9,6 +9,8 @@ import TextInput from '../../components/TextInput';
 import { useNavigation } from '@react-navigation/native';
 
 import * as yup from "yup";
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../types';
 
 
 const schema = yup.object({
@@ -30,16 +32,14 @@ export default function Login() {
     password: string
   }
 
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
   const onSubmit = (data: dataForm) => {
     const { email, password } = data;
     if (email === 'user@exemplo.com.br' && password === '123456') {
-      // navigation.navigate('Home');
-      console.log('Login realizado com sucesso!');
+      navigation.navigate('Home');
     }
   }
-
-  const navigation = useNavigation();
-
 
   return (
     <KeyboardAvoidingView

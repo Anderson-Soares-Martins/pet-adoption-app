@@ -1,29 +1,24 @@
 import { FieldError } from "react-hook-form";
-import { TextInput, Text } from "react-native";
-import React, { FC, InputHTMLAttributes } from 'react';
+import { TextInput, Text, TextInputProps } from "react-native";
+import React, { FC } from 'react';
 
-interface Props extends InputHTMLAttributes<HTMLInputElement> {
+interface Props extends TextInputProps {
   errors?: FieldError
 }
 
-
 const Input: FC<Props> = (props) => {
-  const { style, errors, ...otherProps } = props;
-  const { border } = style;
-  console.log(errors)
+  const { style, errors, ...rest } = props
 
   return (
     <>
       <TextInput
-        style={style}
+        {...rest}
+        style={[style, errors && { borderBottomColor: "red" }]}
         placeholderTextColor="#003f5c"
-        {...otherProps}
       />
-      {errors && <Text style={{ color: 'red' }}>{errors.message}</Text>}
+      {errors && <Text style={{ color: "red" }}>{errors.message}</Text>}
     </>
-  );
+  )
 }
 
-
-
-export default Input;
+export default Input
