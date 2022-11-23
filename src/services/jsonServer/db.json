@@ -1,0 +1,108 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Cachorros",
+      "img": "https://www.petlove.com.br/images/breeds/193563/profile/original/german-shepherd-dog-p.jpg?1532533471"
+    },
+    {
+      "id": 2,
+      "name": "Gatos",
+      "img": "https://www.petlove.com.br/images/breeds/193563/profile/original/german-shepherd-dog-p.jpg?1532533471"
+    },
+    {
+      "id": 3,
+      "name": "Pássaros",
+      "img": "https://www.petlove.com.br/images/breeds/193563/profile/original/german-shepherd-dog-p.jpg?1532533471"
+    },
+    {
+      "id": 4,
+      "name": "Peixes",
+      "img": "https://www.petlove.com.br/images/breeds/193563/profile/original/german-shepherd-dog-p.jpg?1532533471"
+    },
+    {
+      "id": 5,
+      "name": "Roedores",
+      "img": "https://www.petlove.com.br/images/breeds/193563/profile/original/german-shepherd-dog-p.jpg?1532533471"
+    }
+  ],
+  "animal": [
+    {
+      "id": 1,
+      "name": "Bob",
+      "age": 2,
+      "img": "https://www.petlove.com.br/images/breeds/193563/profile/original/german-shepherd-dog-p.jpg?1532533471"
+    },
+    {
+      "id": 2,
+      "name": "Loly",
+      "age": 3,
+      "img": "https://www.petlove.com.br/images/breeds/193563/profile/original/german-shepherd-dog-p.jpg?1532533471"
+    },
+    {
+      "id": 3,
+      "name": "jack",
+      "age": 4,
+      "img": "https://www.petlove.com.br/images/breeds/193563/profile/original/german-shepherd-dog-p.jpg?1532533471"
+    },
+    {
+      "id": 4,
+      "name": "ton",
+      "age": 5,
+      "img": "https://www.petlove.com.br/images/breeds/193563/profile/original/german-shepherd-dog-p.jpg?1532533471"
+    },
+    {
+      "id": 5,
+      "name": "rex",
+      "age": 6,
+      "img": "https://www.petlove.com.br/images/breeds/193563/profile/original/german-shepherd-dog-p.jpg?1532533471"
+    }
+  ],
+  "description": [
+    {
+      "id": 1,
+      "name": "Bob",
+      "age": 2,
+      "img": "https://www.petlove.com.br/images/breeds/193563/profile/original/german-shepherd-dog-p.jpg?1532533471",
+      "description": "Best friend of the world",
+      "phone": "11999999999",
+      "email": "teste@exemplo.com"
+    },
+    {
+      "id": 2,
+      "name": "Loly",
+      "age": 3,
+      "img": "https://www.petlove.com.br/images/breeds/193563/profile/original/german-shepherd-dog-p.jpg?1532533471",
+      "description": "Best friend of the world",
+      "phone": "11999999999",
+      "email": "teste@exemplo.com"
+    },
+    {
+      "id": 3,
+      "name": "jack",
+      "age": 4,
+      "img": "https://www.petlove.com.br/images/breeds/193563/profile/original/german-shepherd-dog-p.jpg?1532533471",
+      "description": "Best friend of the world",
+      "phone": "11999999999",
+      "email": "teste@exemplo.com"
+    },
+    {
+      "id": 4,
+      "name": "ton",
+      "age": 5,
+      "img": "https://www.petlove.com.br/images/breeds/193563/profile/original/german-shepherd-dog-p.jpg?1532533471",
+      "description": "Best friend of the world",
+      "phone": "11999999999",
+      "email": "teste@exemplo.com"
+    },
+    {
+      "id": 5,
+      "name": "rex",
+      "age": 6,
+      "img": "https://www.petlove.com.br/images/breeds/193563/profile/original/german-shepherd-dog-p.jpg?1532533471",
+      "description": "Best friend of the world",
+      "phone": "11999999999",
+      "email": "teste@exemplo.com"
+    }
+  ]
+}
