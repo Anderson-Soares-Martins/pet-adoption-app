@@ -6,8 +6,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import ico from '../../assets/ico.png';
 import TextInput from '../../components/TextInput';
 
-import { useNavigation } from '@react-navigation/native';
-
 import * as yup from "yup";
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../types';
@@ -18,7 +16,11 @@ const schema = yup.object({
   password: yup.string().required('senha é obrigatório').min(6, 'senha deve conter 6 caracteres'),
 }).required();
 
-export default function Login() {
+export interface LoginProps {
+  navigation: NativeStackNavigationProp<RootStackParamList, 'Login'>;
+}
+
+export default function Login({ navigation }: LoginProps) {
   const { control, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
       email: '',
@@ -31,8 +33,6 @@ export default function Login() {
     email: string,
     password: string
   }
-
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const onSubmit = (data: dataForm) => {
     const { email, password } = data;
