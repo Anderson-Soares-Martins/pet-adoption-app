@@ -17,10 +17,8 @@ interface Props {
 export default function ListAnimal(props: Props) {
   const [animal, setAnimal] = React.useState<animalType[]>([]);
 
-  const filteredCategory = animal.filter((animal, index) =>
-    props.currentCategory == 0
-      ? animal
-      : props.currentCategory == animal.categoryId
+  const filteredCategory = animal.filter((a, index) =>
+    props.currentCategory == 0 ? animal : props.currentCategory == a.categoryId
   );
   async function getAnimal() {
     try {
