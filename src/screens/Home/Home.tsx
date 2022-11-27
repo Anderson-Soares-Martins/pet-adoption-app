@@ -1,10 +1,11 @@
 import { Text, View } from "react-native";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import api from "../../services/api";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../../types";
-import Select from "./Select";
+import Picker from "./Picker";
 import ListAnimal from "./ListAnimal";
+import Styles from "./styles";
 
 export interface HomeProps {
   navigation: NativeStackNavigationProp<RootStackParamList, "Home">;
@@ -22,16 +23,22 @@ export default function Home({ navigation }: HomeProps) {
     }
   }
   return (
-    <View>
-      <View>
-        <Text>HOME</Text>
-        <Text>Escolha uma categoria para visualizar</Text>
+    <View style={Styles.container}>
+      <View style={Styles.header}>
+        <Text style={Styles.message}>HOME</Text>
+        <Text style={Styles.subMessage}>
+          Escolha uma categoria para visualizar
+        </Text>
+        <Picker
+          currentCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
       </View>
-      <Select
-        currentCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-      />
-      <ListAnimal currentCategory={selectedCategory} />
+      <View style={Styles.body}>
+        <Text style={Styles.bodyText}>Resultado da busca:</Text>
+        <ListAnimal currentCategory={selectedCategory} />
+      </View>
+      <View style={Styles.footer}></View>
     </View>
   );
 }
