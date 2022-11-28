@@ -8,7 +8,6 @@ import {
   mdiFish,
   mdiRodent,
 } from "@mdi/js";
-
 import {
   View,
   Text,
@@ -18,6 +17,15 @@ import {
   TouchableOpacity,
 } from "react-native";
 import api from "../../services/api";
+
+enum Direction {
+  Dog = 1,
+  cat = 2,
+  bird = 3,
+  fish = 4,
+  rodent = 5,
+  rabbit = 6,
+}
 
 interface animalType {
   id: number;
@@ -52,17 +60,17 @@ export default function ListAnimal(props: Props) {
 
   const icons = (categoryId: number) => {
     switch (categoryId) {
-      case 1:
+      case Direction.Dog:
         return mdiDog;
-      case 2:
+      case Direction.cat:
         return mdiCat;
-      case 3:
+      case Direction.bird:
         return mdiBird;
-      case 4:
+      case Direction.fish:
         return mdiFish;
-      case 5:
+      case Direction.rodent:
         return mdiRodent;
-      case 6:
+      case Direction.rabbit:
         return mdiRabbit;
     }
   };

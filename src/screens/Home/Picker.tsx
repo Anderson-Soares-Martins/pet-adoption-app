@@ -23,7 +23,7 @@ interface Props {
 }
 
 export default function Picker(props: Props) {
-  const [txtOptins, setTxtOptions] = React.useState<string>("Todos");
+  const [txtOptins, setTxtOptions] = React.useState("Todos");
   const [categories, setCategories] = React.useState<categoriesType[]>([]);
   const [modalVisible, setModalVisible] = React.useState(false);
 
