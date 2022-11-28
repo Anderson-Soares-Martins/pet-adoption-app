@@ -1,6 +1,5 @@
 import { Text, View } from "react-native";
-import { useState } from "react";
-import api from "../../services/api";
+import React from "react";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../../types";
 import Picker from "./Picker";
@@ -12,16 +11,10 @@ export interface HomeProps {
 }
 
 export default function Home({ navigation }: HomeProps) {
-  const [selectedCategory, setSelectedCategory] = useState<number>(0);
+  const [selectedCategory, setSelectedCategory] = React.useState(0);
 
-  async function getDescriptionAnimal() {
-    try {
-      const response = await api.get("/animal/1");
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  const onSelect = (id: number) =>
+    navigation.navigate("Description", { id: id });
   return (
     <View style={Styles.container}>
       <View style={Styles.header}>
@@ -36,7 +29,7 @@ export default function Home({ navigation }: HomeProps) {
       </View>
       <View style={Styles.body}>
         <Text style={Styles.bodyText}>Resultado da busca:</Text>
-        <ListAnimal currentCategory={selectedCategory} />
+        <ListAnimal onSelect={onSelect} currentCategory={selectedCategory} />
       </View>
       <View style={Styles.footer}></View>
     </View>
