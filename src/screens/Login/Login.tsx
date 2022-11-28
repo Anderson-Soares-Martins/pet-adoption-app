@@ -1,57 +1,77 @@
-import { Text, Image, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
-import Styles from './styles';
+import {
+  Text,
+  Image,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
+import Styles from "./styles";
 import { useForm, Controller } from "react-hook-form";
-import * as Animatable from 'react-native-animatable';
-import { yupResolver } from '@hookform/resolvers/yup';
-import ico from '../../assets/ico.png';
-import TextInput from '../../components/TextInput';
+import * as Animatable from "react-native-animatable";
+import { yupResolver } from "@hookform/resolvers/yup";
+import ico from "../../assets/ico.png";
+import TextInput from "../../components/TextInput";
+import Modal from "../../components/ModalLoading";
 
 import * as yup from "yup";
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../types';
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../../types";
 
-
-const schema = yup.object({
-  email: yup.string().required('digite algum email').email('verique seu email'),
-  password: yup.string().required('senha é obrigatório').min(6, 'senha deve conter 6 caracteres'),
-}).required();
+const schema = yup
+  .object({
+    email: yup
+      .string()
+      .required("digite algum email")
+      .email("verique seu email"),
+    password: yup
+      .string()
+      .required("senha é obrigatório")
+      .min(6, "senha deve conter 6 caracteres"),
+  })
+  .required();
 
 export interface LoginProps {
-  navigation: NativeStackNavigationProp<RootStackParamList, 'Login'>;
+  navigation: NativeStackNavigationProp<RootStackParamList, "Login">;
 }
 
 export default function Login({ navigation }: LoginProps) {
-  const { control, handleSubmit, formState: { errors } } = useForm({
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
-      email: '',
-      password: ''
+      email: "",
+      password: "",
     },
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   });
 
   type dataForm = {
-    email: string,
-    password: string
-  }
+    email: string;
+    password: string;
+  };
 
   const onSubmit = (data: dataForm) => {
     const { email, password } = data;
-    if (email === 'user@exemplo.com.br' && password === '123456') {
-      navigation.navigate('Home');
+    if (email === "user@exemplo.com.br" && password === "123456") {
+      navigation.navigate("Home");
     }
-  }
+  };
 
   return (
     <KeyboardAvoidingView
       style={Styles.container}
-      behavior={Platform.OS === "ios" ? "padding" : "height"}>
-      <Animatable.View style={Styles.header} animation='fadeInLeft'>
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+      <Modal />
+      <Animatable.View style={Styles.header} animation="fadeInLeft">
         <Image source={ico} style={Styles.logo} />
         <Text style={Styles.message}>LOGIN</Text>
         <Text style={Styles.subMessage}>Insira seus dados para continuar</Text>
       </Animatable.View>
 
-      <Animatable.View style={Styles.form} animation='fadeInUp'>
+      <Animatable.View style={Styles.form} animation="fadeInUp">
         <Text style={Styles.formText}>EMAIL</Text>
         <Controller
           control={control}
@@ -61,7 +81,7 @@ export default function Login({ navigation }: LoginProps) {
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
               style={Styles.formInput}
-              placeholder='Digite seu email'
+              placeholder="Digite seu email"
               errors={errors.email}
               onBlur={onBlur}
               onChangeText={onChange}
@@ -80,7 +100,7 @@ export default function Login({ navigation }: LoginProps) {
             <TextInput
               style={Styles.formInput}
               errors={errors.password}
-              placeholder='Digite sua senha'
+              placeholder="Digite sua senha"
               onBlur={onBlur}
               onChangeText={onChange}
               secureTextEntry={true}
@@ -90,11 +110,16 @@ export default function Login({ navigation }: LoginProps) {
           name="password"
         />
 
-        <TouchableOpacity style={Styles.button} onPress={handleSubmit(onSubmit)} >
+        <TouchableOpacity
+          style={Styles.button}
+          onPress={handleSubmit(onSubmit)}
+        >
           <Text style={Styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
         <TouchableOpacity style={Styles.registerButton}>
-          <Text style={Styles.registerText}>Não possui uma conta? Cadastre-se</Text>
+          <Text style={Styles.registerText}>
+            Não possui uma conta? Cadastre-se
+          </Text>
         </TouchableOpacity>
       </Animatable.View>
     </KeyboardAvoidingView>
