@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, Image, ScrollView } from "react-native";
 import api from "../../services/api";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../../types";
@@ -32,15 +32,34 @@ export default function Description({ navigation }: DescriptionProps) {
 
   async function getDescription(animalId: number | undefined) {
     try {
-      const response = await api.get("/animal/1");
+      const response = await api.get("/animal/" + animalId);
       setDescription(response.data);
     } catch (error) {
       console.log(error);
     }
   }
+
   return (
-    <View>
-      <Text>{description?.name}</Text>
+    <View style={Styles.container}>
+      <View style={Styles.header}>
+        <View style={Styles.containerImage}>
+          <Image style={Styles.image} source={{ uri: description?.img }} />
+        </View>
+      </View>
+
+      <View style={Styles.body}>
+        <ScrollView>
+          <Text style={Styles.message}>Nome</Text>
+          <Text style={Styles.subMessage}>{description?.name}</Text>
+          <Text style={Styles.message}>Idade</Text>
+          <Text style={Styles.subMessage}>{description?.age} anos</Text>
+          <Text style={Styles.message}>Descrição</Text>
+          <Text style={Styles.subMessage}>{description?.description}</Text>
+          <Text style={Styles.message}>Contato</Text>
+          <Text style={Styles.subMessage}>Email: {description?.email}</Text>
+          <Text style={Styles.subMessage}>Phone: {description?.phone}</Text>
+        </ScrollView>
+      </View>
     </View>
   );
 }
