@@ -1,6 +1,31 @@
 import React from "react";
-import { View, Text, FlatList, ListRenderItem } from "react-native";
+import Svg, { Path } from "react-native-svg";
+import {
+  mdiRabbit,
+  mdiDog,
+  mdiBird,
+  mdiCat,
+  mdiFish,
+  mdiRodent,
+} from "@mdi/js";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import api from "../../services/api";
+
+enum Direction {
+  Dog = 1,
+  cat = 2,
+  bird = 3,
+  fish = 4,
+  rodent = 5,
+  rabbit = 6,
+}
 
 interface animalType {
   id: number;
@@ -33,15 +58,40 @@ export default function ListAnimal(props: Props) {
     getAnimal();
   }, []);
 
+  const icons = (categoryId: number) => {
+    switch (categoryId) {
+      case Direction.Dog:
+        return mdiDog;
+      case Direction.cat:
+        return mdiCat;
+      case Direction.bird:
+        return mdiBird;
+      case Direction.fish:
+        return mdiFish;
+      case Direction.rodent:
+        return mdiRodent;
+      case Direction.rabbit:
+        return mdiRabbit;
+    }
+  };
+
   const renderItem = ({ item }: { item: animalType }) => (
-    <View>
-      <Text>{item.name}</Text>
-    </View>
+    <TouchableOpacity style={styles.container}>
+      <Image style={styles.image} source={{ uri: item.img }} />
+      <View style={styles.informations}>
+        <View style={styles.info}>
+          <Svg width="25" height="25" viewBox="0 0 25 25">
+            <Path d={icons(item.categoryId)} fill="black" />
+          </Svg>
+          <Text style={styles.name}>{item.name}</Text>
+        </View>
+        <Text style={styles.age}>{item.age} anos</Text>
+      </View>
+    </TouchableOpacity>
   );
 
   return (
     <View>
-      <Text>Resultado da busca:</Text>
       <FlatList
         data={filteredCategory}
         renderItem={renderItem}
@@ -50,3 +100,35 @@ export default function ListAnimal(props: Props) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    paddingTop: "2%",
+  },
+  image: {
+    width: 100,
+    height: 100,
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
+  },
+  info: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  informations: {
+    flex: 1,
+    paddingLeft: 10,
+    paddingVertical: "5%",
+    backgroundColor: "#fff",
+    borderTopRightRadius: 10,
+    borderBottomEndRadius: 10,
+  },
+  name: {
+    paddingLeft: 10,
+    fontSize: 25,
+  },
+  age: {
+    paddingLeft: 10,
+  },
+});
