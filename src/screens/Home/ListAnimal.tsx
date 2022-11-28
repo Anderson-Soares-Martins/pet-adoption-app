@@ -37,6 +37,7 @@ interface animalType {
 
 interface Props {
   currentCategory: number;
+  onSelect: (id: number) => void;
 }
 
 export default function ListAnimal(props: Props) {
@@ -76,7 +77,10 @@ export default function ListAnimal(props: Props) {
   };
 
   const renderItem = ({ item }: { item: animalType }) => (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => props.onSelect(item.id)}
+    >
       <Image style={styles.image} source={{ uri: item.img }} />
       <View style={styles.informations}>
         <View style={styles.info}>
