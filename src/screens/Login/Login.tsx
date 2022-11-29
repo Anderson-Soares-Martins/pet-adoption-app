@@ -11,7 +11,6 @@ import * as Animatable from "react-native-animatable";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ico from "../../assets/ico.png";
 import TextInput from "../../components/TextInput";
-import Modal from "../../components/ModalLoading";
 
 import * as yup from "yup";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -64,7 +63,6 @@ export default function Login({ navigation }: LoginProps) {
       style={Styles.container}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
-      <Modal />
       <Animatable.View style={Styles.header} animation="fadeInLeft">
         <Image source={ico} style={Styles.logo} />
         <Text style={Styles.message}>LOGIN</Text>

@@ -38,6 +38,7 @@ interface animalType {
 interface Props {
   currentCategory: number;
   onSelect: (id: number) => void;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function ListAnimal(props: Props) {
@@ -50,6 +51,7 @@ export default function ListAnimal(props: Props) {
     try {
       const response = await api.get("/animal");
       setAnimal(response.data);
+      props.setIsLoading(false);
     } catch (error) {
       console.log(error);
     }

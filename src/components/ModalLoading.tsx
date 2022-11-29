@@ -4,15 +4,18 @@ import * as Animatable from "react-native-animatable";
 import Svg, { Path } from "react-native-svg";
 import { mdiPaw } from "@mdi/js";
 
-const Loading: FC = () => {
-  const [modalVisible, setModalVisible] = React.useState(true);
+interface Props {
+  modalVisible: boolean;
+  setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
+const Loading: FC<Props> = (props) => {
   return (
     <Modal
       animationType="fade"
       transparent={true}
-      visible={modalVisible}
-      onRequestClose={() => setModalVisible(false)}
+      visible={props.modalVisible}
+      onRequestClose={() => props.setModalVisible(false)}
     >
       <View style={styles.container}>
         <Animatable.View
