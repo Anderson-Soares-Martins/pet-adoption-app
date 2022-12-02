@@ -2,12 +2,12 @@ import {
   Text,
   Image,
   TouchableOpacity,
+  View,
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
 import Styles from "./styles";
 import { useForm, Controller } from "react-hook-form";
-import * as Animatable from "react-native-animatable";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ico from "../../assets/ico.png";
 import TextInput from "../../components/TextInput";
@@ -37,6 +37,7 @@ export default function Login({ navigation }: LoginProps) {
   const {
     control,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -55,6 +56,8 @@ export default function Login({ navigation }: LoginProps) {
     const { email, password } = data;
     if (email === "user@exemplo.com.br" && password === "123456") {
       navigation.navigate("Home");
+    } else {
+      setError("email", { message: "Email ou senha incorreta" });
     }
   };
 
@@ -63,13 +66,13 @@ export default function Login({ navigation }: LoginProps) {
       style={Styles.container}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
-      <Animatable.View style={Styles.header} animation="fadeInLeft">
+      <View style={Styles.header}>
         <Image source={ico} style={Styles.logo} />
         <Text style={Styles.message}>LOGIN</Text>
         <Text style={Styles.subMessage}>Insira seus dados para continuar</Text>
-      </Animatable.View>
+      </View>
 
-      <Animatable.View style={Styles.form} animation="fadeInUp">
+      <View style={Styles.form}>
         <Text style={Styles.formText}>EMAIL</Text>
         <Controller
           control={control}
@@ -78,6 +81,7 @@ export default function Login({ navigation }: LoginProps) {
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
+              testID="emailInput"
               style={Styles.formInput}
               placeholder="Digite seu email"
               errors={errors.email}
@@ -96,6 +100,7 @@ export default function Login({ navigation }: LoginProps) {
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
+              testID="passwordInput"
               style={Styles.formInput}
               errors={errors.password}
               placeholder="Digite sua senha"
@@ -107,8 +112,8 @@ export default function Login({ navigation }: LoginProps) {
           )}
           name="password"
         />
-
         <TouchableOpacity
+          testID="ButtonSubmit"
           style={Styles.button}
           onPress={handleSubmit(onSubmit)}
         >
@@ -119,7 +124,7 @@ export default function Login({ navigation }: LoginProps) {
             Não possui uma conta? Cadastre-se
           </Text>
         </TouchableOpacity>
-      </Animatable.View>
+      </View>
     </KeyboardAvoidingView>
   );
 }
