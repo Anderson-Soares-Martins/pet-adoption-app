@@ -9,23 +9,16 @@ import {
 import Login from "../../screens/Login/Login";
 import "@testing-library/jest-native/dist/extend-expect";
 import React from "react";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../../types";
+import { NavigationContainer } from "@react-navigation/native";
 
 jest.mock("react-native/Libraries/Animated/NativeAnimatedHelper");
 
-describe("Test Login", () => {
+describe("Login Screen", () => {
   const navigationMock = {
     navigate: jest.fn(),
   } as any;
-  it("labelsEmpyt", () => {
-    render(<Login navigation={navigationMock} />);
 
-    expect(screen.getAllByPlaceholderText("Digite seu email").length).toBe(1);
-    expect(screen.getAllByPlaceholderText("Digite sua senha").length).toBe(1);
-  });
-
-  it("Test of Empty credencial", async () => {
+  it("it rendering inputs", async () => {
     render(<Login navigation={navigationMock} />);
 
     await act(() => {
@@ -33,12 +26,12 @@ describe("Test Login", () => {
     });
 
     await waitFor(() => {
-      expect(screen.queryAllByText("digite algum email").length).toBe(1);
-      expect(screen.queryAllByText("senha é obrigatório").length).toBe(1);
+      expect(screen.getByText("digite algum email")).toBeTruthy;
+      expect(screen.getByText("senha é obrigatório")).toBeTruthy;
     });
   });
 
-  it("Test of Wrong credencial", async () => {
+  it("it rendering error messages when submit wrong form", async () => {
     render(<Login navigation={navigationMock} />);
 
     await act(() => {
@@ -51,7 +44,7 @@ describe("Test Login", () => {
     });
 
     await waitFor(() => {
-      expect(screen.queryAllByText("Email ou senha incorreta").length).toBe(1);
+      expect(screen.queryByText("Email ou senha incorreta")).toBeTruthy;
     });
 
     await act(() => {
@@ -64,7 +57,7 @@ describe("Test Login", () => {
     });
 
     await waitFor(() => {
-      expect(screen.queryAllByText("Email ou senha incorreta").length).toBe(1);
+      expect(screen.queryByText("Email ou senha incorreta")).toBeTruthy;
     });
 
     await act(() => {
@@ -74,14 +67,18 @@ describe("Test Login", () => {
     });
 
     await waitFor(() => {
-      expect(
-        screen.queryAllByText("senha deve conter 6 caracteres").length
-      ).toBe(1);
-      expect(screen.queryAllByText("verique seu email").length).toBe(1);
+      expect(screen.queryByText("senha deve conter 6 caracteres")).toBeTruthy;
+
+      expect(screen.queryByText("verique seu email")).toBeTruthy;
     });
   });
-  it("Test of correct credencial", async () => {
-    render(<Login navigation={navigationMock} />);
+
+  it("it testing correct credencial", async () => {
+    render(
+      <NavigationContainer>
+        <Login navigation={navigationMock} />{" "}
+      </NavigationContainer>
+    );
     await act(() => {
       fireEvent.changeText(
         screen.getByTestId("emailInput"),
@@ -93,6 +90,8 @@ describe("Test Login", () => {
 
     await waitFor(() => {
       expect(navigationMock.navigate).toHaveBeenCalledWith("Home");
+      screen.rerender(<Login navigation={navigationMock} />);
+      screen.debug();
     });
   });
 });
