@@ -24,8 +24,8 @@ describe("Login Screen", () => {
     });
 
     await waitFor(() => {
-      expect(screen.getByText("digite algum email")).toBeTruthy;
-      expect(screen.getByText("senha é obrigatório")).toBeTruthy;
+      expect(screen.getByText("digite algum email")).toBeTruthy();
+      expect(screen.getByText("senha é obrigatório")).toBeTruthy();
     });
   });
 
@@ -42,7 +42,7 @@ describe("Login Screen", () => {
     });
 
     await waitFor(() => {
-      expect(screen.getByText("Email ou senha incorreta")).toBeTruthy;
+      expect(screen.getByText("Email ou senha incorreta")).toBeTruthy();
     });
 
     await act(() => {

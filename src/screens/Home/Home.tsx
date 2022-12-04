@@ -45,8 +45,3 @@ export default function Home({ navigation }: HomeProps) {
     </>
   );
 }
-
-//? 1 - Colocar categoryId em animal = Feito
-//? 2 - Componentizar um compoentne para o select e um para mostrar os animais
-//? 3 - exibir os animais
-//? 4 - fazer ele filtrar pela categoria

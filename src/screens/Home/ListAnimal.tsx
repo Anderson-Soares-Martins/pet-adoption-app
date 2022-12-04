@@ -16,7 +16,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import api from "../../services/api";
+import { api } from "../../services/api";
 
 enum Direction {
   Dog = 1,
@@ -80,6 +80,7 @@ export default function ListAnimal(props: Props) {
 
   const renderItem = ({ item }: { item: animalType }) => (
     <TouchableOpacity
+      testID="Select-animal"
       style={styles.container}
       onPress={() => props.onSelect(item.id)}
     >
@@ -99,6 +100,7 @@ export default function ListAnimal(props: Props) {
   return (
     <View>
       <FlatList
+        testID="Flatlist-test"
         data={filteredCategory}
         renderItem={renderItem}
         keyExtractor={(item: animalType) => item.name}
