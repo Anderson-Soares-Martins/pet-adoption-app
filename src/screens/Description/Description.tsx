@@ -21,14 +21,7 @@ interface descriptionType {
   email: string;
 }
 
-interface Props {
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export default function Description(
-  { navigation }: DescriptionProps,
-  props: Props
-) {
+export default function Description({ navigation }: DescriptionProps) {
   const [description, setDescription] = React.useState<descriptionType>();
   const [isLoading, setIsLoading] = React.useState(true);
 
@@ -43,7 +36,9 @@ export default function Description(
     try {
       const response = await api.get("/animal/" + animalId);
       setIsLoading(false);
-      setDescription(response.data);
+      if (response.data.length > 0) {
+        setDescription(response.data);
+      }
     } catch (error) {
       console.log(error);
     }

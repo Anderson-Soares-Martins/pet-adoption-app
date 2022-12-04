@@ -49,7 +49,7 @@ const onSelect = jest.fn();
 const selectedCategory = 0;
 const setIsLoading = jest.fn();
 
-describe("Testing data render in picker component", () => {
+describe("Testing data render in ListAnimal component", () => {
   it("it rendering listanimal", async () => {
     await waitFor(() => {
       render(
