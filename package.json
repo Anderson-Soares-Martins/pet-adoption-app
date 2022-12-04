@@ -11,7 +11,7 @@
     "server": "json-server --watch src/services/jsonServer/db.json --routes src/services/jsonServer/routes.json --delay 2000 -H 0.0.0.0 --port 8080"
   },
   "jest": {
-    "preset": "@testing-library/react-native",
+    "preset": "react-native",
     "setupFilesAfterEnv": [
       "@testing-library/jest-native/extend-expect"
     ],

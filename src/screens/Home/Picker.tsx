@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import Svg, { Path } from "react-native-svg";
 import { mdiChevronDown } from "@mdi/js";
-import api from "../../services/api";
+import { api } from "../../services/api";
 
 interface categoriesType {
   id: number;

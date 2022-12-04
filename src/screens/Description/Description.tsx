@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View, Image, ScrollView } from "react-native";
-import api from "../../services/api";
+import { api } from "../../services/api";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../../types";
 import Styles from "./styles";
