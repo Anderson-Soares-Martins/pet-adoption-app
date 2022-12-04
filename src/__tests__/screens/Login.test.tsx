@@ -2,14 +2,12 @@ import {
   screen,
   render,
   fireEvent,
-  within,
   waitFor,
   act,
 } from "@testing-library/react-native";
 import Login from "../../screens/Login/Login";
 import "@testing-library/jest-native/dist/extend-expect";
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 
 jest.mock("react-native/Libraries/Animated/NativeAnimatedHelper");
 
@@ -33,19 +31,6 @@ describe("Login Screen", () => {
 
   it("it rendering error messages when submit wrong form", async () => {
     render(<Login navigation={navigationMock} />);
-
-    await act(() => {
-      fireEvent.changeText(
-        screen.getByTestId("emailInput"),
-        "user@exemple.com.br"
-      );
-      fireEvent.changeText(screen.getByTestId("passwordInput"), "123456");
-      fireEvent.press(screen.getByTestId("ButtonSubmit"));
-    });
-
-    await waitFor(() => {
-      expect(screen.queryByText("Email ou senha incorreta")).toBeTruthy;
-    });
 
     await act(() => {
       fireEvent.changeText(
@@ -74,11 +59,7 @@ describe("Login Screen", () => {
   });
 
   it("it testing correct credencial", async () => {
-    render(
-      <NavigationContainer>
-        <Login navigation={navigationMock} />{" "}
-      </NavigationContainer>
-    );
+    render(<Login navigation={navigationMock} />);
     await act(() => {
       fireEvent.changeText(
         screen.getByTestId("emailInput"),
@@ -90,8 +71,6 @@ describe("Login Screen", () => {
 
     await waitFor(() => {
       expect(navigationMock.navigate).toHaveBeenCalledWith("Home");
-      screen.rerender(<Login navigation={navigationMock} />);
-      screen.debug();
     });
   });
 });

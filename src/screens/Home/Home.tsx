@@ -19,7 +19,7 @@ export default function Home({ navigation }: HomeProps) {
     navigation.navigate("Description", { id: id });
   return (
     <>
-      <View testID="HomeScreen" style={Styles.container}>
+      <View style={Styles.container}>
         <View style={Styles.header}>
           <Text style={Styles.message}>HOME</Text>
           <Text style={Styles.subMessage}>
