@@ -10,7 +10,7 @@ describe("Home Screen", () => {
     navigate: jest.fn(),
   } as any;
 
-  it("it rendering picker", async () => {
+  it("it rendering modal loading", async () => {
     render(<Home navigation={navigationMock} />);
     expect(screen.getByTestId("ModalActivity").props).toMatchObject({
       visible: true,
