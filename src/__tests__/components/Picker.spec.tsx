@@ -50,13 +50,13 @@ describe("Testing data render in picker component", () => {
   );
 
   it("it rendering picker", async () => {
-    expect(screen.getByText("Todos")).toBeTruthy;
+    expect(screen.getByText("Todos")).toBeTruthy();
 
     await act(() => {
       fireEvent.press(screen.getByTestId("Picker-test"));
     });
     await waitFor(() => {
-      expect(screen.getByTestId("Flatlist-test")).toBeTruthy;
+      expect(screen.getByTestId("Flatlist-test")).toBeTruthy();
     });
   });
 });
