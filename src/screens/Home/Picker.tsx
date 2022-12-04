@@ -63,6 +63,7 @@ export default function Picker(props: Props) {
   return (
     <>
       <TouchableOpacity
+        testID="Picker-test"
         style={styles.container}
         onPress={() => setModalVisible(true)}
       >
@@ -80,6 +81,7 @@ export default function Picker(props: Props) {
         <TouchableOpacity onPress={() => setModalVisible(false)}>
           <View style={styles.modal}>
             <FlatList
+              testID="Flatlist-test"
               data={categories}
               renderItem={renderItem}
               keyExtractor={(item: categoriesType) => item.name}
