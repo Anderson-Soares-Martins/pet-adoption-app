@@ -15,6 +15,5 @@ describe("Home Screen", () => {
     expect(screen.getByTestId("ModalActivity").props).toMatchObject({
       visible: true,
     });
-    screen.debug();
   });
 });

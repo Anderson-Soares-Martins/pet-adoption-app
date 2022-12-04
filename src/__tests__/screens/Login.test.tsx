@@ -42,7 +42,7 @@ describe("Login Screen", () => {
     });
 
     await waitFor(() => {
-      expect(screen.queryByText("Email ou senha incorreta")).toBeTruthy;
+      expect(screen.getByText("Email ou senha incorreta")).toBeTruthy;
     });
 
     await act(() => {
@@ -52,9 +52,9 @@ describe("Login Screen", () => {
     });
 
     await waitFor(() => {
-      expect(screen.queryByText("senha deve conter 6 caracteres")).toBeTruthy;
+      expect(screen.getByText("senha deve conter 6 caracteres")).toBeTruthy;
 
-      expect(screen.queryByText("verique seu email")).toBeTruthy;
+      expect(screen.getByText("verique seu email")).toBeTruthy;
     });
   });
 
