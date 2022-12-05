@@ -68,7 +68,7 @@ const navigationMock = {
 } as any;
 
 describe("Description", () => {
-  it("should render the component", async () => {
+  it("it should render the component", async () => {
     render(<Description navigation={navigationMock} />);
     await waitFor(() => {
       expect(screen.getByText("Nome")).toBeTruthy();
@@ -77,7 +77,7 @@ describe("Description", () => {
       expect(screen.getByText("Contato")).toBeTruthy();
     });
   });
-  it("should render the component with data", async () => {
+  it("it should render the component with data", async () => {
     render(<Description navigation={navigationMock} />);
     await waitFor(() => {
       expect(screen.getByText("Test 1")).toBeTruthy();
