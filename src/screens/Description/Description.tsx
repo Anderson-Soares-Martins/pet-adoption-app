@@ -36,9 +36,7 @@ export default function Description({ navigation }: DescriptionProps) {
     try {
       const response = await api.get("/animal/" + animalId);
       setIsLoading(false);
-      if (response.data.length > 0) {
-        setDescription(response.data);
-      }
+      setDescription(response.data);
     } catch (error) {
       console.log(error);
     }
