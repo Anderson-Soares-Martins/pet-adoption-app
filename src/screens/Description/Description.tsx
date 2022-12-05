@@ -21,21 +21,14 @@ interface descriptionType {
   email: string;
 }
 
-interface Props {
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export default function Description(
-  { navigation }: DescriptionProps,
-  props: Props
-) {
+export default function Description({ navigation }: DescriptionProps) {
   const [description, setDescription] = React.useState<descriptionType>();
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
     const animalId = navigation
       .getState()
-      .routes.find((item) => item.name == "Description")?.params?.id;
+      .routes.find((item) => item.name === "Description")?.params?.id;
     getDescription(animalId);
   }, []);
 
