@@ -28,7 +28,7 @@ export default function Description({ navigation }: DescriptionProps) {
   React.useEffect(() => {
     const animalId = navigation
       .getState()
-      .routes.find((item) => item.name == "Description")?.params?.id;
+      .routes.find((item) => item.name === "Description")?.params?.id;
     getDescription(animalId);
   }, []);
 

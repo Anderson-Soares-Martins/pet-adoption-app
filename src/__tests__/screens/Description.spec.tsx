@@ -10,38 +10,16 @@ jest.mock("../../services/api", () => {
       get: (url: string) => {
         if (url === "/animal/1") {
           return Promise.resolve({
-            data: [
-              {
-                id: 1,
-                name: "Test 1",
-                categoryId: 1,
-                age: 2,
-                img: "",
-                description: "test description",
-                phone: 489999999,
-                email: "user@exemplo.com.br",
-              },
-              {
-                id: 2,
-                name: "Test 1",
-                categoryId: 2,
-                age: 3,
-                img: "",
-                description: "test description",
-                phone: 489999999,
-                email: "user@exemplo.com.br",
-              },
-              {
-                id: 3,
-                name: "Test 1",
-                categoryId: 3,
-                age: 3,
-                img: "",
-                description: "test description",
-                phone: 489999999,
-                email: "user@exemplo.com.br",
-              },
-            ],
+            data: {
+              id: 1,
+              name: "Test 1",
+              categoryId: 1,
+              age: 2,
+              img: "",
+              description: "test description",
+              phone: 489999999,
+              email: "user@exemplo.com.br",
+            },
           });
         }
       },
@@ -53,16 +31,14 @@ const navigationMock = {
   navigate: jest.fn(),
   getState: () => {
     return {
-      routes: {
-        find: () => {
-          return {
-            key: "Description-jL6dRVAuCS3QzQOyGrHzi",
-            name: "Description",
-            params: { id: 1 },
-            path: undefined,
-          };
+      routes: [
+        {
+          name: "Description",
+          params: {
+            id: 1,
+          },
         },
-      },
+      ],
     };
   },
 } as any;
